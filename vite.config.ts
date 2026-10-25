@@ -46,24 +46,8 @@ export default defineConfig({
             '@': resolve(__dirname, 'src'),
         },
     },
-    optimizeDeps: {
-        esbuildOptions: {
-            plugins: [
-                {
-                    name: 'load-js-files-as-tsx',
-                    setup(build: { onLoad: (arg0: { filter: RegExp; }, arg1: (args: any) => Promise<{ loader: string; contents: string; }>) => void; }) {
-                        build.onLoad(
-                            { filter: /src\\.*\.js$/ },
-                            async (args) => ({
-                                loader: 'tsx',
-                                contents: await fs.readFile(args.path, 'utf8'),
-                            })
-                        );
-                    },
-                },
-            ],
-        },
+    build: {
+        chunkSizeWarningLimit: 2500,
     },
-
     plugins: [svgr(), react()],
 });
