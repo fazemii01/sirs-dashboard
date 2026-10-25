@@ -1,0 +1,482 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./pages/app.css";
+
+
+@import "./styles/style-lyra.css";
+
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* shadcn style variants — applied as body classes (e.g. .style-nova) */
+
+@custom-variant style-lyra (&:where(.style-lyra *));
+
+
+
+
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist-sans/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/geist-mono/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@theme {
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 1px 4px rgba(133, 146, 173, 0.2);
+  --shadow-btn-shadow: 0 9px 17.5px rgba(0, 0, 0, 0.05);
+  --radius-lg: 7px;
+  --margin-30: 30px;
+  --text-40: 40px;
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* E-Marisa Color Tokens */
+  --color-brand-deep: var(--color-brand-deep);
+  --color-brand-mid: var(--color-brand-mid);
+  --color-brand-light: var(--color-brand-light);
+  --color-brand-wash: var(--color-brand-wash);
+  --color-brand-tint: var(--color-brand-tint);
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-300: var(--color-ink-300);
+  --color-ink-100: var(--color-ink-100);
+  --color-ink-50: var(--color-ink-50);
+  --color-surface: var(--color-surface);
+}
+
+:root {
+  --font-geist: 'Geist', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --success: oklch(0.627 0.194 149.214);
+  --warning: oklch(0.795 0.184 86.047);
+  --error: oklch(0.577 0.245 27.325);
+  --radius: 8px;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* --- E-MARISA BRAND CORE --- */
+  --color-brand-deep: #0A4A42;
+  --color-brand-mid: #0D6B5F;
+  --color-brand-light: #14957F;
+  --color-brand-wash: #E8F5F2;
+  --color-brand-tint: #F0FAF8;
+
+  /* --- E-MARISA NEUTRALS --- */
+  --color-ink-900: #0F1923;
+  --color-ink-700: #2C3E4A;
+  --color-ink-500: #6B7C8A;
+  --color-ink-300: #B4C0C8;
+  --color-ink-100: #EDF1F3;
+  --color-ink-50: #F7F9FA;
+  --color-surface: #FFFFFF;
+  --color-white: #FFFFFF;
+
+  /* --- E-MARISA SEMANTIC --- */
+  --color-success: #1A7F5A;
+  --color-success-bg: #E8F5EF;
+  --color-danger: #C0392B;
+  --color-danger-bg: #FCEAEA;
+  --color-warning: #D4860A;
+  --color-warning-bg: #FEF3E2;
+  --color-info: #1A5FAA;
+  --color-info-bg: #E8F0FA;
+
+  /* --- E-MARISA ADMIN SHELL --- */
+  --color-sidebar-bg: #0F1923;
+  --color-sidebar-border: #1E2D3A;
+  --color-sidebar-text: #8FA3B1;
+  --color-sidebar-active-bg: #0D6B5F;
+  --color-sidebar-active-text: #FFFFFF;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+
+
+@utility frontend-page {
+  & .container {
+    @apply max-w-[1410px];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /*heading text color*/
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  input[type="radio"]:focus {
+    @apply !ring-primary;
+  }
+
+  input[type="radio"]:checked {
+    @apply bg-primary;
+  }
+}
+
+@utility btn-circle-hover {
+  @apply h-9 w-9 flex justify-center items-center rounded-full hover:bg-primary/5 hover:text-primary cursor-pointer bg-transparent;
+}
+
+/* Card Shadow Control via Data Attribute */
+html[data-card-shadow="true"] [data-slot="card"] {
+  @apply shadow-md ring-0;
+}
+
+html[data-card-shadow="false"] [data-slot="card"] {
+  @apply border shadow-none ring-0;
+}
+
+[data-slot="checkbox"] {
+  /* @apply data-checked:bg-primary data-hover:bg-primary data-checked:border-primary data-checked:text-white; */
+}
+
+[data-slot="input"] {
+  @apply focus-visible:border-primary focus-visible:ring-[0px];
+}
+
+[data-slot="textarea"] {
+  @apply focus-visible:border-primary focus-visible:ring-[0px];
+}
+
+/*for sidebar */
+
+[data-sidebar-type="true"] {
+  /* Only apply the icon-only + hover-preview behavior while the sidebar
+     is actually in its real collapsed ("icon") state. When it's expanded
+     (data-collapsible is empty), labels render normally with no overrides. */
+  [data-slot="sidebar"][data-collapsible="icon"] {
+    .sidebar-box .hide-menu {
+      @apply hidden;
+    }
+
+    .sidebar-box:hover {
+      width: 250px !important;
+      @apply transition-all duration-300;
+
+      [data-slot="sidebar-container"],
+      [data-sidebar="sidebar"],
+      [data-sidebar="sidebar-inner"] {
+        width: 250px !important;
+        transition: width 0.3s ease-in-out !important;
+      }
+
+      .hide-menu {
+        display: flex !important;
+      }
+
+      div.hide-menu {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      span.hide-menu {
+        display: inline-block !important;
+        white-space: nowrap !important;
+      }
+
+      /* Powerfully override Shadcn's internal button restrictions on hover */
+      [data-slot="sidebar-menu-button"],
+      [data-sidebar="menu-button"] {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 44px !important;
+        padding: 0 !important;
+
+        overflow: visible !important;
+        justify-content: flex-start !important;
+      }
+
+
+
+      /* Inner alignment for NavUser and NavSecondary to match standard items */
+      [data-sidebar="menu-button"] .flex.items-center {
+        padding: 8px 12px !important;
+        width: 100% !important;
+        gap: 12px !important;
+      }
+
+
+
+
+    }
+
+    .sidebar-box:not(:hover) {
+
+      /* Ensure icons are perfectly centered in mini mode */
+      [data-sidebar="menu-button"] {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+        width: 100% !important;
+      }
+
+      [data-sidebar="menu-button"] .flex.items-center {
+        justify-content: center !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        width: 100% !important;
+      }
+
+
+
+    }
+  }
+}
+
+
+[data-slot="chart"] {
+  @apply h-72 w-full;
+}
+
+@utility frontend-page {
+  & .container {
+    @apply max-w-[1410px];
+  }
+}
+
+@utility container {
+  @apply max-w-[1367px] mx-auto;
+}
+
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
+
+}
+
+.font-mono-id {
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.08em;
+}
+
+/* --- PRINT STYLES FOR KUITANSI & LAPORAN --- */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 210mm !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide all UI elements (Sidebar, Nav, Buttons, Cards) */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Only show the element with class .printable-receipt-area */
+  .printable-receipt-area,
+  .printable-receipt-area * {
+    visibility: visible !important;
+  }
+
+  .printable-receipt-area {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    padding: 15mm 20mm !important;
+    background: white !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    z-index: 99999 !important;
+    overflow: hidden !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Expand receipt card container on print to fill printable paper width */
+  .receipt-card-container {
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', var(--font-sans), sans-serif;
+}
+
+.font-dm-sans {
+  font-family: 'DM Sans', var(--font-sans), sans-serif;
+}
+
+.font-mono-id {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+}
